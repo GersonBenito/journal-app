@@ -1,0 +1,109 @@
+
+*{
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+html, body{
+    height: 100vh;
+    width: 100vw;
+}
+
+main{
+    width: 100%;
+}
+
+// margin top
+.mt-1{
+    margin-top: 2px;
+}
+.mt-2{
+    margin-top: 6px;
+}
+.mt-3{
+    margin-top: 9px;
+}
+.mt-4{
+    margin-top: 12px;
+}
+.mt-5{
+    margin-top: 15px;
+}
+
+// margin bottom
+.mb-1{
+    margin-bottom: 3px;
+}
+.mb-2{
+    margin-bottom: 6px;
+}
+.mb-3{
+    margin-bottom: 9px;
+}
+.mb-4{
+    margin-bottom: 12px;
+}
+.mb-5{
+    margin-bottom: 15px;
+}
+
+//matgin left
+.ml-1{
+    margin-left: 3px;
+}
+.ml-2{
+    margin-left: 6px;
+}
+.ml-3{
+    margin-left: 9px;
+}
+.ml-4{
+    margin-left: 12px;
+}
+.ml-5{
+    margin-left: 15px;
+}
+
+// margin right
+.mr-1{
+    margin-right: 3px;
+}
+.mr-2{
+    margin-right: 6px;
+}
+.mr-3{
+    margin-right: 9px;
+}
+.mr-4{
+    margin-right: 12px;
+}
+.mr-5{
+    margin-right: 15px;
+}
+
+// pading general
+.p-1{
+    padding: 3px;
+}
+.p-2{
+    padding: 6px;
+}
+.p-3{
+    padding: 9px;
+}
+.p-4{
+    padding: 12px;
+}
+.p-5{
+    padding: 15px;
+}
+
+// cursor de mouse
+.pointer{
+    cursor: pointer;
+}
+
+.dishable{
+    cursor: no-drop;
+}
+
