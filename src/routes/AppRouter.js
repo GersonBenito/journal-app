@@ -20,7 +20,7 @@ export const AppRouter = () => {
 
             if( user?.uid ){
 
-                dispatch( login( user.uid, user.displayName ) );
+                dispatch( login( user.uid, user.displayName, user.photoURL ) );
                 setIsLoggedIn(true);
 
             }else{

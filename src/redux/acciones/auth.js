@@ -18,7 +18,7 @@ export const starLoginEmailPassword = (email, password) => async(dispatch) =>{
 
         const { user } = await signInWithEmailAndPassword( auth, email, password );
 
-        dispatch( login( user.uid, user.displayName ) );
+        dispatch( login( user.uid, user.displayName, user.photoURL ) );
 
         dispatch( finishLoading() );
         
@@ -40,9 +40,15 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => asy
         
         const { user } = await createUserWithEmailAndPassword(auth, email, password );
         
-        await updateProfile( user, { displayName: name } );
+        await updateProfile( 
+            user, 
+            { 
+                displayName: name, 
+                photoURL: 'https://static.vecteezy.com/system/resources/previews/002/454/057/non_2x/man-faceless-profile-free-vector.jpg' 
+            }
+        );
 
-        dispatch( login( user.uid, user.displayName ) );
+        dispatch( login( user.uid, user.displayName, user.photoURL ) );
 
     } catch (error) {
         Swal.fire({
@@ -58,7 +64,7 @@ export const startGoogleLogin = () => async (dispatch) =>{
     try {
         const { user } = await signInWithPopup( auth, google );
         
-        dispatch( login( user.uid, user.displayName ) );
+        dispatch( login( user.uid, user.displayName, user.photoURL ) );
         
     } catch (error) {
 
@@ -67,11 +73,12 @@ export const startGoogleLogin = () => async (dispatch) =>{
     
 }
 
-export const login = ( uid, displayName ) =>({ // usando retorno implicito de la funcion
+export const login = ( uid, displayName, photo ) =>({ // usando retorno implicito de la funcion
     type: types.LOGIN,
     payload: {
         uid,
-        displayName
+        displayName,
+        photo
     }
 });
 
