@@ -29,7 +29,7 @@ export const Sidebar = () => {
                     className="btn"
                     onClick={ handleLogout }
                 >
-                    <i className="fas fa-sign-out-alt"></i>
+                    <i className="fas fa-sign-out-alt fa-2x"></i>
                 </button>
             </div>
 
