@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../redux/acciones/auth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { startLoadingNotes } from '../redux/acciones/notes';
 
 export const AppRouter = () => {
 
@@ -16,12 +17,14 @@ export const AppRouter = () => {
 
     useEffect(()=>{
 
-        auth.onAuthStateChanged( (user) =>{
+        auth.onAuthStateChanged( async (user) =>{
 
             if( user?.uid ){
 
                 dispatch( login( user.uid, user.displayName, user.photoURL ) );
                 setIsLoggedIn(true);
+
+                dispatch( startLoadingNotes( user.uid ) );
 
             }else{
 
