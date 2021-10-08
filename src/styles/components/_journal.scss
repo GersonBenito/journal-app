@@ -48,7 +48,17 @@
 .journal__entries{
     flex: 1 1 auto;
     margin-top: 30px;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.journal__entries::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+}
+
+.journal__entries::-webkit-scrollbar-thumb {
+    background: $dark-grey;
+    border-radius: 4px;
 }
 
 .journal__entry{

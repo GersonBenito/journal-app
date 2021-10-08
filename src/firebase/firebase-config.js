@@ -5,7 +5,8 @@ import {
   getDocs,
   addDoc,
   deleteDoc,
-  updateDoc 
+  updateDoc ,
+  doc,
 } from 'firebase/firestore';
 import { 
   getAuth, 
@@ -35,6 +36,7 @@ const google = new GoogleAuthProvider();
 
 export { 
   db, 
+  doc,
   auth, 
   google,
   addDoc,
