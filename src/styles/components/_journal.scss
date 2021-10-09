@@ -67,6 +67,8 @@
     color: $dark-grey;
     margin-bottom: 10px;
     overflow: hidden;
+    justify-content: space-between;
+    display: flex;
 }
 
 .journal__entry-picture{

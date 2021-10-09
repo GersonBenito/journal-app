@@ -19,7 +19,7 @@ export const JournalEnrty = ({ id, date, title, body, url }) => {
 
     return (
         <div 
-            className="journal__entry pointer"
+            className="journal__entry pointer animate__animated animate__fadeIn animate__faster"
             onClick={ handleEntryClick }
         >
             {
@@ -28,7 +28,7 @@ export const JournalEnrty = ({ id, date, title, body, url }) => {
                         className="journal__entry-picture"
                         style={{
                             backgroundSize: 'cover',
-                            backgroundImage: 'url(https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg)'
+                            backgroundImage: `url(${ url })`
                         }}
                     >
                     </div>

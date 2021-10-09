@@ -9,6 +9,7 @@ import {
 import { types } from "../types/types";
 import { finishLoading, startLoading } from "./error";
 import Swal from 'sweetalert2'
+import { startCleanLogout } from "./notes";
 
 export const starLoginEmailPassword = (email, password) => async(dispatch) =>{
     
@@ -87,6 +88,7 @@ export const startLogout = () => async (dispatch) =>{
 
    await auth.signOut();
    dispatch( logout() );
+   dispatch( startCleanLogout() );
 
 }
 

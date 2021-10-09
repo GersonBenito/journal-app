@@ -32,7 +32,10 @@ export const Login = () => {
         <>
             <h3 className="auth__title mb-3" >Login</h3>
 
-            <form onSubmit={ handleSubmit } >
+            <form 
+                onSubmit={ handleSubmit } 
+                className="animate__animated animate__fadeIn animate__faster"
+            >
 
                 <input
                     type="text"

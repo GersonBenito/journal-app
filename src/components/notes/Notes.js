@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from '../../hooks/useForm';
-import { activeNote } from '../../redux/acciones/notes';
+import { activeNote, startDeleting } from '../../redux/acciones/notes';
 import { NotesAppBar } from './NotesAppBar'
 
 export const Notes = () => {
@@ -28,8 +28,14 @@ export const Notes = () => {
 
     },[ values, dispatch ])
 
+    const handleDelete = () =>{
+
+        dispatch( startDeleting( active.uid ) );
+
+    }
+
     return (
-        <div className="notes__main-content" >
+        <div className="notes__main-content animate__animated animate__fadeIn" >
             
             <NotesAppBar />
 
@@ -58,7 +64,7 @@ export const Notes = () => {
 
                             <div className="notes__image">
                                 <img 
-                                    src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" 
+                                    src={ active.url }
                                     alt="imagen" 
                                 />
                             </div>
@@ -66,6 +72,13 @@ export const Notes = () => {
                 }
 
             </div>
+
+            <button
+                className="btn btn-danger"
+                onClick={ handleDelete }
+            >
+                <i className="fas fa-trash fa-2x"></i>
+            </button>
 
         </div>
     )

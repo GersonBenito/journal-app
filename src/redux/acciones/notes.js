@@ -1,6 +1,7 @@
 
 import Swal from "sweetalert2";
-import { db, doc, collection, addDoc, updateDoc } from "../../firebase/firebase-config";
+import { db, doc, collection, addDoc, updateDoc, deleteDoc } from "../../firebase/firebase-config";
+import { fileUpload } from "../../helpers/fileUpload";
 import { loadNotes } from "../../helpers/loadNotes";
 import { types } from "../types/types";
 
@@ -18,6 +19,7 @@ export const startNewNote = () => async ( dispatch, getState ) =>{
 
     const doc = await addDoc( collection( db, `${ uid }/journal/notes` ), newNote );
     dispatch( activeNote( doc.id, newNote ) );
+    dispatch( addNewNote( doc.id, newNote ) );
 
 }
 
@@ -26,6 +28,13 @@ export const activeNote = ( uid, note ) =>({
     payload: {
         uid,
         ...note,
+    }
+})
+
+export const addNewNote = ( id, note ) =>({
+    type: types.NOTE_ADD_NEW,
+    payload: {
+        id, ...note
     }
 })
 
@@ -91,5 +100,66 @@ export const refreshNote = (id, note) =>({
             ...note
         }
     }
+
+})
+
+export const startUpload = ( file ) => async ( dispatch, getState ) =>{
+
+    const { active } = getState().notes;
+
+    Swal.fire({
+        title: 'Subiendo...',
+        text: 'Por favor espere...',
+        allowOutsideClick: false,
+        didOpen: () =>{
+
+            Swal.showLoading();
+
+        }
+        
+    })
+    
+    const url = await fileUpload( file );
+    active.url = url;
+    
+    dispatch( startSaveNote( active ) );
+
+    Swal.close();
+
+}
+
+export const startDeleting = ( id ) => async ( dispatch, getState ) =>{
+
+    const { uid } = getState().auth;
+
+    try {
+
+        await deleteDoc( doc( db, `${ uid }/journal/notes/${ id }` ) );
+
+        dispatch( deleteNote( id ) );
+        
+        Swal.fire({
+            icon:'success',
+            title:'Nota Eliminado',
+            text:'Nota eliminado correctamente'
+        })
+
+    } catch (error) {
+
+        throw error
+    }
+
+}
+
+export const deleteNote = ( id ) =>({
+
+    type: types.NOTE_DELETE,
+    payload: id
+
+})
+
+export const startCleanLogout = () => ({
+
+    type: types.NOTE_LOGOUT_CLEANING
 
 })
